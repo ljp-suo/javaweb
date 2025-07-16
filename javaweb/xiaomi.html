@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Xiaomi SU7、Xiaomi 15系列，搭载小米澎湃OS，共筑「人车家全生态」</title>
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+    <!-- 引入swiper.js -->
+    <style>
+        body{
+            display:flex;
+            flex-direction: column;
+            min-height: 100vh;
+            margin: 0;
+        }
+        /* 导航栏部分 */
+        .logo img{
+            width:52px;
+            height:auto;
+            margin-left:90px;
+        }
+        .nav-list{
+            display:flex;
+            flex-direction: row;
+            gap:40px;
+        }
+        .head-container{
+            display: flex;
+            align-items: center;
+            position: fixed;
+            width:100%;
+            z-index: 1000; /* 确保导航在最顶层 */
+            transition: background-color 0.3s ease;
+        }
+        nav{
+            margin-left:160px;
+            /* 控制导航栏与左边logo的距离 */
+        }
+        .login{
+            margin-left: 190px;
+        }
+        li{
+            list-style: none;
+            /* 把列表前面的那个点删掉 */
+        }
+        #guanwang{
+            color:#FF6900;
+        }
+        .another,.fuhao{
+            color:white;
+            text-decoration: none;
+        }
+        .another:hover,.footer a:hover{
+            color:#FF6900;
+        }
+        /* 正文部分 */
+        .swiper-container {
+            position: relative;
+        width: 100%;
+        height: 100vh; /* 根据需求调整高度 */
+        overflow: hidden;/* 隐藏下方的滚动栏 */
+        }
+
+        .swiper-slide {
+        width: 100%;
+        height: 83%;
+
+        }
+
+        .swiper-slide img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        }
+        /* 箭头部分 */
+        .swiper-button-next,.swiper-button-prev{
+
+            margin-top:-40px;
+            top:42%;
+        }
+        .swiper-button-next::after,.swiper-button-prev::after{
+            content:'';
+            display:block;
+            width:12px;
+            height:12px;            /* 设置长度 */
+            border-top:4px solid #fff;
+            border-right: 4px solid #fff;            /* 设置边框的样式 */
+            position:absolute;
+            top:50%;
+            margin-top:-15px;
+            transition: all 0.3s ease;
+        }
+        .swiper-button-next:hover:after,.swiper-button-prev:hover:after{
+            border-color: #ff6700;
+        }
+        /* 箭头方向 */
+        .swiper-button-next:after{
+            transform: rotate(45deg);
+            right:5px;
+        }
+        .swiper-button-prev:after{
+            transform: rotate(-135deg);
+            left:5px;
+        }
+
+        .custom-pagination1{
+            position:absolute;
+            bottom: 200px !important;
+            left:50%;
+            transform: translateX(-50%);
+            width:20%;
+            height: 4px;
+            background: rgba(130, 132, 135,0.7)!important;
+            overflow: hidden;
+            z-index: 999;
+            /* 自定义CSS变量，前面需要加-- */
+            --start2:0%;
+            --end2:0%;
+            --hover-start1:0%;
+            --hover-end1:0%;
+            /* 鼠标移动到对应区域时，变成手 */
+            cursor:pointer;
+        }   
+            .custom-pagination2{
+            position:absolute;
+            bottom: 200px !important;
+            left:50%;
+            transform: translateX(-50%);
+            width:20%;
+            height: 4px;
+            background: rgba(130, 132, 135,0.7);
+            overflow: hidden;
+            z-index: 999;
+            --start2:0%;
+            --end2:0%;
+            --hover-start2:0%;
+            --hover-end2:0%;
+            cursor:pointer;
+        }   
+
+        /* 橙色进度条 */
+        .custom-pagination1::before{
+            content: '';
+            position:absolute;
+            left:var(--start1);
+            width:calc(var(--end1) - var(--start1));
+            height: 100%;
+            background: #ff6700;
+        }
+        .custom-pagination2::before{
+            content: '';
+            position:absolute;
+            left:var(--start2);
+            width:calc(var(--end2) - var(--start2));
+            height: 100%;
+            background: #ff6700;
+        }
+        /* 灰色背景加深 */
+        .custom-pagination1::after{
+            content:'';
+            position:absolute;
+            left:var(--hover-start1);
+            width:calc(var(--hover-end1) - var(--hover-start1));
+            height: 100%;
+            background-color: rgba(255,255,255,0.3);
+            z-index:1;
+        }
+        .custom-pagination2::after{
+            content:'';
+            position:absolute;
+            left:var(--hover-start2);
+            width:calc(var(--hover-end2) - var(--hover-start2));
+            height: 100%;
+            background-color: rgba(255,255,255,0.3);
+            z-index:1;
+        }
+        /* 页尾整体  */
+        .footer{
+            display: flex;
+            align-items: flex-start;
+            line-height: 14px;
+            width: 100%;
+            height:190px;
+            background-color:rgb(250, 250, 250);
+            margin-top:auto;
+            margin-left:0px;
+
+        }
+        /* 页尾的小米logo */
+        .footer img{
+            height: 55px;
+            margin-left:278px;
+        }
+        /* 页尾的链接 */
+        .footer a,span{
+            color:#757575;
+            text-decoration: none;
+            font-size: 10px;
+        }
+        /* 页尾的第二部分链接 */
+        div[class="footer-1"] div[class="word-2"] a{
+            color:rgb(176, 176, 176);
+        }
+        div[class="footer-1"] div[class="word-2"] a:hover{
+            color:#FF6900;
+        }
+        div[class="footer-1"] div[class="word-2"] a[class="nochange"]:hover{
+            color:rgb(176, 176, 176);
+        }
+        .certification-icons {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap:20px;
+
+        }
+        .certification-icons img {
+            height: 28px;
+            width: auto;
+            margin-left: 0px;
+        }
+        .image{
+            position: absolute;/* 使两张图片脱离文档流，强制重叠 */
+            opacity:0;/* 透明度拉满，隐藏图片 */
+            
+        }
+        .image.active{
+            opacity:1;
+        }
+        /* 这里还要改一下使结尾的大小更加合适一些 */
+        img[class="beautiful"]{
+            width:1200px;
+            height:30px;
+        }
+    </style>
+</head>
+<body>
+    <!-- 顶部导航栏部分 -->
+     <div class="head-container">
+        <a href="https://www.mi.com/" class="logo">
+            <img src="logo.png" >
+        </a>
+        <nav >
+            <ul class="nav-list">
+                <li ><a style="text-decoration: none;" href="https://www.mi.com/" target="_blank" id="guanwang">小米官网</a></li>
+                <li><a href="https://www.mi.com/shop" target="_blank" class="another">小米商城</a></li>
+                <li><a href="https://hyperos.mi.com/" target="_blank" class="another">小米澎湃OS</a></li>
+                <li><a href="https://www.xiaomiev.com/" target="_blank" class="another">小米汽车</a></li>
+                <li><a href="https://www.mi.com/visual" target="_blank" class="another">小米影像</a></li>
+                <li><a href="https://i.mi.com/" target="_blank" class="another">云服务</a></li>
+                <li><a href="https://iot.mi.com/" target="_blank" class="another">loT</a></li>
+                <li><a href="https://www.xiaomiyoupin.com/" target="_blank" class="another">有品</a></li>
+                <li><a href="https://xiaoai.mi.com/" target="_blank" class="another">小爱开放平台</a></li>
+                <li><a href="https://www.mi.com/a/h/28031.html?sign=16e89fe1079f3f505dfeac5481b7a4d5" target="_blank" class="another">Location</a></li>
+            </ul>
+        </nav>
+        <div class="login">
+            <a href="https://account.xiaomi.com/fe/service/login/password?_qrsize=180&sid=mi_eshop&qs=%253Fcallback%253Dhttp%25253A%25252F%25252Forder.mi.com%25252Flogin%25252Fcallback%25253Ffollowup%25253Dhttps%2525253A%2525252F%2525252Fwww.mi.com%2525252F%252526sign%25253DNzY3MDk1YzczNmUwMGM4ODAxOWE0NjRiNTU5ZGQyMzFhYjFmOGU0Nw%25252C%25252C%2526sid%253Dmi_eshop%2526_qrsize%253D180&callback=http%3A%2F%2Forder.mi.com%2Flogin%2Fcallback%3Ffollowup%3Dhttps%253A%252F%252Fwww.mi.com%252F%26sign%3DNzY3MDk1YzczNmUwMGM4ODAxOWE0NjRiNTU5ZGQyMzFhYjFmOGU0Nw%2C%2C&_sign=w1RBM6cG8q2xj5JzBPPa65QKs9w%3D&serviceParam=%7B%22checkSafePhone%22%3Afalse%2C%22checkSafeAddress%22%3Afalse%2C%22lsrp_score%22%3A0.0%7D&showActiveX=false&theme=&needTheme=false&bizDeviceType=&_locale=zh_CN" class="another">登录</a></div>
+            <a class="fuhao">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+            <a href="https://cn.account.xiaomi.com/fe/service/register?_qrsize=180&source=&region=CN&sid=mi_eshop&qs=callback%3Dhttp%253A%252F%252Forder.mi.com%252Flogin%252Fcallback%253Ffollowup%253Dhttps%25253A%25252F%25252Fwww.mi.com%25252F%2526sign%253DNzY3MDk1YzczNmUwMGM4ODAxOWE0NjRiNTU5ZGQyMzFhYjFmOGU0Nw%252C%252C%26sid%3Dmi_eshop%26_qrsize%3D180&callback=http%3A%2F%2Forder.mi.com%2Flogin%2Fcallback%3Ffollowup%3Dhttps%253A%252F%252Fwww.mi.com%252F%26sign%3DNzY3MDk1YzczNmUwMGM4ODAxOWE0NjRiNTU5ZGQyMzFhYjFmOGU0Nw%2C%2C&_locale=zh_CN&_uRegion=CN" class="another">注册</a>
+     </div>
+     <!-- 正文区域 -->
+      <div class="swiper-container" id="change1">
+        <div class="swiper-wrapper">   <!-- 定义一个滑动容器 -->
+        <div class="swiper-slide">     <!-- 定义一张图片（幻灯片） -->
+        <a href="https://www.xiaomiev.com/yu7?spmref=MiShop_PC.mihomepage.mtl_6720bfd0352df30001ebf72c.1">
+      <img src="https://img.youpin.mi-img.com/ferriswheel/9c3e35fe_c7e3_47ba_a55b_8bf291fc4c80.jpeg@base@tag=imgScale&F=webp&h=1180&q=90&w=2560">
+        </a>
+        </div>
+        <div class="swiper-slide">     
+        <a href="https://www.xiaomiev.com/ultra?spmref=MiShop_PC.mihomepage.mtl_6720bfd0352df30001ebf72c.1">
+      <img src="https://img.youpin.mi-img.com/ferriswheel/50b4ace2_7ced_45fc_9ea9_826beeae1b82.jpeg@base@tag=imgScale&F=webp&h=1180&q=90&w=2560" >
+        </a>
+        </div>
+        <div class="swiper-slide">    
+        <a href="https://www.xiaomiev.com/su7?spmref=MiShop_PC.mihomepage.mtl_6720bfd0352df30001ebf72c.1">
+        <img src="https://img.youpin.mi-img.com/ferriswheel/a350a69a_0a57_4464_8edf_bc7097598fd6.jpeg@base@tag=imgScale&F=webp&h=1180&q=90&w=2560" >
+        </a>
+        </div>
+      </div>
+      <div class="custom-pagination1"></div>      <!-- 分页器 -->
+      <div class="swiper-button-next"></div>
+      <div class="swiper-button-prev"></div>
+      </div>
+      <!-- 第二部分图片 -->
+      <div class="swiper-container" id="change2">
+        <div class="swiper-wrapper">   
+        <div class="swiper-slide">     
+        <a href="https://www.mi.com/prod/xiaomi-15-ultra?spmref=MiShop_PC.mihomepage.mtl_684f81f1352df30001db3e70.1">
+      <img src="https://img.youpin.mi-img.com/ferriswheel/bbea5d98_79dd_444d_a1a9_169a5eb307e5.jpeg@base@tag=imgScale&F=webp&h=1080&q=90&w=2560">
+        </a>
+        </div>
+        <div class="swiper-slide">     
+        <a href="https://www.mi.com/prod/xiaomi-mix-flip2?spmref=MiShop_PC.mihomepage.mtl_684f81f1352df30001db3e70.1">
+      <img src="https://img.youpin.mi-img.com/ferriswheel/14ad027c_4ec5_4932_9071_cd301d0f41c8.jpeg@base@tag=imgScale&F=webp&h=1080&q=90&w=2560" >
+        </a>
+        </div>
+        <div class="swiper-slide">    
+        <a href="https://www.mi.com/prod/xiaomi-15s-pro?spmref=MiShop_PC.mihomepage.mtl_684f81f1352df30001db3e70.1">
+        <img src="https://img.youpin.mi-img.com/ferriswheel/cbccf5a0_db97_4e53_a877_d6f9975c1d7d.png@base@tag=imgScale&F=webp&h=1080&q=90&w=2560" >
+        </a>
+        </div>
+      </div>
+      <div class="custom-pagination2"></div>      
+      <div class="swiper-button-next"></div>
+      <div class="swiper-button-prev"></div>
+      </div>
+
+      <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+     <!-- 页脚区域 -->
+      <footer class="footer">
+        <img src="logo.png">
+        <div class="footer-1">
+        <a href="https://www.mi.com/shop" target="_blank">小米商城</a>
+        <span class="footer-char">|</span>
+        <a href="https://hyperos.mi.com/" target="_blank">小米澎湃OS</a>
+        <span class="footer-char">|</span>
+        <a href="https://home.mi.com/index.html" target="_blank">米家</a>
+        <span class="footer-char">|</span>
+        <a href="https://www.duokan.com/pc/" target="_blank">多看</a>
+        <span class="footer-char">|</span>
+        <a href="https://game.xiaomi.com/" target="_blank">游戏</a>
+        <span class="footer-char">|</span>
+        <a href="https://www.mi.com/music" target="_blank">音乐</a>
+        <span class="footer-char">|</span>
+        <a href="https://b.mi.com/?client_id=180100031058&masid=17409.0358#/" target="_blank">政企服务</a>
+        <span class="footer-char">|</span>
+        <a href="https://xiaomi.tmall.com/shop/view_shop.htm" target="_blank">小米天猫店</a>
+        <span class="footer-char">|</span>
+        <a href="https://privacy.mi.com/all/zh_CN/" target="_blank">小米集团隐私政策</a>
+        <span class="footer-char">|</span>
+        <a href="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/f516fe9e2c01.html" target="_blank">小米公司儿童信息保护规则</a>
+        <span class="footer-char">|</span>
+        <a href="https://m.mi.com/support/module?id=63&headless=1" target="_blank">小米商城隐私政策</a>
+        <span class="footer-char">|</span>
+        <a href="https://m.mi.com/support/module?id=63&headless=1" target="_blank">小米商城用户协议</a>
+        <span class="footer-char">|</span>
+        <a href="https://static.mi.com/feedback/" target="_blank">问题反馈</a>
+        <span class="footer-char">|</span>
+        <a >Select location or language</a>
+        <br>
+        <a href="https://www.mi.com/beihu" target="_blank">北京互联网法院法律服务工作站</a>
+        <span class="footer-char">|</span>
+        <a href="https://www.cca.org.cn/index" target="_blank">中国消费者协会</a>
+        <span class="footer-char">|</span>
+        <a href="https://www.bj315.org/" target="_blank">北京市消费者协会</a>
+        <br>
+        <div class="word-2">
+        <a class="nochange">©</a>
+        <a class="nochange">mi.com</a>
+        <a class="nochange">京ICP证110507号</a>
+        <a href="https://beian.miit.gov.cn/" target="_blank">京ICP备10046444号</a>
+        <a href="https://beian.mps.gov.cn/#/query/webSearch" target="_blank">京公网安备11010802020134号</a>
+        <a href="https://www.mi.com/culture-license" target="_blank"> 京网文[2023]0169-004号</a>
+        <br>
+        <a class="nochange">（京）网械平台备字（2018）第00005号</a>
+        <a class="nochange">药品医疗器械网络信息服务备案 (京)网药械信息备字（2024）第00478号</a>
+        <a href="https://www.mi.com/shop/business-license" target="_blank">营业执照</a>
+        <a href="https://www.mi.com/shop/medical/list" target="_blank">医疗器械质量公告</a>
+        <br>
+        <a href="https://cdn.cnbj1.fds.api.mi-img.com/staticsfile/pc/5f93056c-bc30-401e-9526-66839114ffb9.png" target="_blank">增值电信业务经营许可证编号：京B2-20180851 </a>
+        <a class="nochange">网络食品经营备案</a>
+        <a class="nochange">京食药网食备202010048</a>
+        <a href="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/c6859168166651511897f54fa1047fe3.png" target="_blank">食品经营许可证</a>
+        <a class="nochange">新出发京批字第直220280号</a>
+        <br>
+        <a class="nochange">违法和不良信息举报电话：171-5104-4404</a>
+        <a href="https://www.mi.com/intellectual" target="_blank">知识产权侵权投诉</a>
+        <a class="nochange">本网站所列数据，除特殊说明，所有数据均出自我司实验室测试</a>
+        </div>  
+        <div class="certification-icons">
+            <div class="icon-groups">
+            <a href="https://credit.cecdc.com/CX20120926001783002010.html" target="_blank">
+            <img src="https://s01.mifile.cn/i/v-logo-2.png" >
+            </a>
+            <a href="https://kx.xcc.cn/newCan/2021122904514041324" target="_blank">
+            <img src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/icon3.png" >
+            </a>
+            <a href="https://www.mi.com/service/buy/commitment" target="_blank">
+            <img src="https://i8.mifile.cn/b2c-mimall-media/ba10428a4f9495ac310fd0b5e0cf8370.png" >
+            </a>
+            <a href="https://webcert.cnmstl.net/cert/grade?sn=3af21034e35011eab3ea00163e068ceb" target="_blank">
+            <img src="https://cdn.cnbj1.fds.api.mi-img.com/b2c-misite-activity/f1ee261b96ae71e845efba398efeca02.png" class="image active">
+            <img src="https://cdn.cnbj1.fds.api.mi-img.com/b2c-misite-activity/80933804b32694354bdd4f79a7b7aa90.png" class="image">
+            </a>
+            </div>
+            <img src="image.png" class="beautiful">
+        </div>
+        </div>
+      </footer>
+      <!-- script部分 -->
+              <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>       <!-- 引入swiper.js -->
+       <script src="./xiaomi.js"></script>
+</body>
+</html>

@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>小米风格轮播</title>
+  <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css"/>
+  <style>
+    * {
+      margin: 0; 
+      padding: 0; 
+      box-sizing: border-box;
+    }
+    body {
+      min-height: 100vh;
+      background: #000;
+    }
+
+    .swiper-container {
+      width: 100%;
+      height: 100vh;
+      position: relative;
+      overflow: hidden;
+    }
+    .swiper-slide {
+      width: 100%;
+      height: 100vh;
+    }
+    .swiper-slide img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* 自定义分段分页器 */
+    .custom-pagination {
+      position: absolute;
+      bottom: 50px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80%;
+      max-width: 1200px;
+      height: 4px;
+      background: rgba(255,255,255,0.1); /* 调暗默认背景 */
+      border-radius: 2px;
+      overflow: hidden;
+      z-index: 999;
+      cursor: pointer;
+    }
+    
+    /* 当前激活的分段（橙色） */
+    .custom-pagination::before {
+      content: '';
+      position: absolute;
+      left: var(--start, 0%);
+      width: calc(var(--end, 0%) - var(--start, 0%));
+      height: 100%;
+      background: #ff6700;
+      transition: width 0.3s ease, left 0.3s ease;
+      z-index: 2; /* 确保在hover层上方 */
+    }
+    
+    /* 悬停提示层（灰色加深） */
+    .custom-pagination::after {
+      content: '';
+      position: absolute;
+      left: var(--hover-start, 0%);
+      width: calc(var(--hover-end, 0%) - var(--hover-start, 0%));
+      height: 100%;
+      background: rgba(255,255,255,0.3); /* 比默认背景更暗 */
+
+      z-index: 1; /* 在激活层下方 */
+    }
+
+    .swiper-button-next,
+    .swiper-button-prev {
+      color: #fff;
+      --swiper-navigation-size: 30px;
+      top: 50%;
+      transform: translateY(-50%);
+      transition: color 0.3s;
+      z-index: 1000;
+    }
+    .swiper-button-next:hover,
+    .swiper-button-prev:hover {
+      color: #ff6700;
+    }
+  </style>
+</head>
+<body>
+  <div class="swiper-container">
+    <div class="swiper-wrapper">
+      <div class="swiper-slide">
+        <img src="https://img.youpin.mi-img.com/ferriswheel/9c3e35fe_c7e3_47ba_a55b_8bf291fc4c80.jpeg" alt="Slide 1">
+      </div>
+      <div class="swiper-slide">
+        <img src="https://img.youpin.mi-img.com/ferriswheel/50b4ace2_7ced_45fc_9ea9_826beeae1b82.jpeg" alt="Slide 2">
+      </div>
+      <div class="swiper-slide">
+        <img src="https://img.youpin.mi-img.com/ferriswheel/a350a69a_0a57_4464_8edf_bc7097598fd6.jpeg" alt="Slide 3">
+      </div>
+    </div>
+
+    <div class="custom-pagination" id="pagination1"></div>
+
+    <div class="swiper-button-prev"></div>
+    <div class="swiper-button-next"></div>
+  </div>
+
+  <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+  <script>
+    const mySwiper1 = new Swiper('.swiper-container', {
+      loop: true,
+      autoplay: {
+        delay: 4000,
+        disableOnInteraction: false,
+      },
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+      },
+    });
+
+    const pagination1 = document.getElementById('pagination1');
+    const totalSlides = 3;
+    const segmentWidth = 100 / totalSlides; // 每段宽度（33.33%）
+
+    // 更新分页器显示
+    function updateSegment() {
+      const currentIndex = mySwiper1.realIndex;
+      const start = (currentIndex / totalSlides) * 100;
+      const end = ((currentIndex + 1) / totalSlides) * 100;
+      
+      pagination1.style.setProperty('--start', `${start}%`);
+      pagination1.style.setProperty('--end', `${end}%`);
+    }
+
+    // 鼠标移动时更新悬停区域
+    pagination1.addEventListener('mousemove', function(e) {
+      const rect = pagination1.getBoundingClientRect();
+      const mouseX = e.clientX - rect.left;
+      const percentage = (mouseX / rect.width) * 100;
+      
+      // 计算当前鼠标所在的分段索引
+      const hoverIndex = Math.min(Math.floor(percentage / segmentWidth), totalSlides - 1);
+      const hoverStart = hoverIndex * segmentWidth;
+      const hoverEnd = (hoverIndex + 1) * segmentWidth;
+      
+      // 更新悬停区域的CSS变量
+      pagination1.style.setProperty('--hover-start', `${hoverStart}%`);
+      pagination1.style.setProperty('--hover-end', `${hoverEnd}%`);
+    });
+
+    // 鼠标离开时重置悬停效果
+    pagination1.addEventListener('mouseleave', function() {
+      pagination1.style.setProperty('--hover-start', '0%');
+      pagination1.style.setProperty('--hover-end', '0%');
+    });
+
+    // 点击分页器跳转到对应幻灯片
+    pagination1.addEventListener('click', function(e) {
+      const rect = pagination1.getBoundingClientRect();
+      const clickPosition = e.clientX - rect.left;
+      const perc = (clickPosition / rect.width) * 100;
+      const targetIndex = Math.min(Math.floor(perc / segmentWidth), totalSlides - 1);
+      
+      mySwiper1.slideTo(targetIndex);
+      console.log(`点击位置: ${perc.toFixed(2)}%, 跳转到第 ${targetIndex + 1} 张图`);
+    });
+
+    // 初始化及监听事件
+    mySwiper1.on('init', updateSegment);
+    mySwiper1.on('slideChange', updateSegment);
+    mySwiper1.on('slideChangeTransitionEnd', updateSegment);
+
+    // 首次加载修正
+    setTimeout(updateSegment, 100);
+  </script>
+</body>
+</html>
