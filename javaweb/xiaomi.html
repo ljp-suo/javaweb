@@ -11,7 +11,7 @@
             display:flex;
             flex-direction: column;
             min-height: 100vh;
-            margin: 0;
+
         }
         /* 导航栏部分 */
         .logo img{
@@ -50,26 +50,28 @@
             color:white;
             text-decoration: none;
         }
-        .another:hover,.footer a:hover{
+        .another:hover,.footer a:hover,.s-word:hover{
             color:#FF6900;
         }
         /* 正文部分 */
         .swiper-container {
             position: relative;
-        width: 100%;
-        height: 100vh; /* 根据需求调整高度 */
-        overflow: hidden;/* 隐藏下方的滚动栏 */
+            width: 100%;
+            height: 75vh; /* 根据需求调整高度 */
+            overflow: hidden;/* 隐藏下方的滚动栏 */
         }
-
+        #change1,#change2,#change3,#change4{
+            margin-bottom: 15px !important;
+        }
         .swiper-slide {
         width: 100%;
-        height: 83%;
+        height: 100%;
 
         }
 
         .swiper-slide img {
         width: 100%;
-        height: 100%;
+        height: 75vh;
         object-fit: cover;
         }
         /* 箭头部分 */
@@ -105,7 +107,7 @@
 
         .custom-pagination1{
             position:absolute;
-            bottom: 200px !important;
+            bottom: 25px !important;
             left:50%;
             transform: translateX(-50%);
             width:20%;
@@ -121,9 +123,9 @@
             /* 鼠标移动到对应区域时，变成手 */
             cursor:pointer;
         }   
-            .custom-pagination2{
+        .custom-pagination2{
             position:absolute;
-            bottom: 200px !important;
+            bottom: 25px !important;
             left:50%;
             transform: translateX(-50%);
             width:20%;
@@ -136,7 +138,39 @@
             --hover-start2:0%;
             --hover-end2:0%;
             cursor:pointer;
-        }   
+        }
+        .custom-pagination3{
+            position:absolute;
+            bottom: 25px !important;
+            left:50%;
+            transform: translateX(-50%);
+            width:20%;
+            height: 4px;
+            background: rgba(130, 132, 135,0.7);
+            overflow: hidden;
+            z-index: 999;
+            --start3:0%;
+            --end3:0%;
+            --hover-start3:0%;
+            --hover-end3:0%;
+            cursor:pointer;
+        }  
+        .custom-pagination4{
+            position:absolute;
+            bottom: 25px !important;
+            left:50%;
+            transform: translateX(-50%);
+            width:20%;
+            height: 4px;
+            background: rgba(130, 132, 135,0.7);
+            overflow: hidden;
+            z-index: 999;
+            --start4:0%;
+            --end4:0%;
+            --hover-start4:0%;
+            --hover-end4:0%;
+            cursor:pointer;
+        }       
 
         /* 橙色进度条 */
         .custom-pagination1::before{
@@ -152,6 +186,22 @@
             position:absolute;
             left:var(--start2);
             width:calc(var(--end2) - var(--start2));
+            height: 100%;
+            background: #ff6700;
+        }
+        .custom-pagination3::before{
+            content: '';
+            position:absolute;
+            left:var(--start3);
+            width:calc(var(--end3) - var(--start3));
+            height: 100%;
+            background: #ff6700;
+        }
+        .custom-pagination4::before{
+            content: '';
+            position:absolute;
+            left:var(--start4);
+            width:calc(var(--end4) - var(--start4));
             height: 100%;
             background: #ff6700;
         }
@@ -174,6 +224,109 @@
             background-color: rgba(255,255,255,0.3);
             z-index:1;
         }
+        .custom-pagination3::after{
+            content:'';
+            position:absolute;
+            left:var(--hover-start3);
+            width:calc(var(--hover-end3) - var(--hover-start3));
+            height: 100%;
+            background-color: rgba(255,255,255,0.3);
+            z-index:1;
+        }
+        .custom-pagination4::after{
+            content:'';
+            position:absolute;
+            left:var(--hover-start4);
+            width:calc(var(--hover-end4) - var(--hover-start4));
+            height: 100%;
+            background-color: rgba(255,255,255,0.3);
+            z-index:1;
+        }
+        /* 第五部分图片 */
+        .f-picture{
+            width:100%;
+            margin-bottom: 15px;
+        }
+        .s-word{
+            color: #757575;
+            text-decoration: none;
+        }
+        .six-word{
+            display: flex;
+            flex-direction: row;
+            gap:75px;
+            justify-content: center;
+            margin-left:240px;
+        }
+        dt{
+            margin:-1px 0 26px;
+            font-size: 14px;
+            font-weight: bold;
+            line-height: 1.25;
+            color:#424242;
+
+        }
+        dd{
+            margin:10px 0 0;
+            font-size: 12px;
+        }
+        /* 第六部分右边区域 */
+        .col-contact{
+            display: flex;
+            flex-direction: column;
+            text-align: center;
+            gap:50px;
+
+        }
+        .col-contact1{
+            /* 设置分隔线样式 */
+            border-left:1px solid #ccc;
+            margin-left:100px ;
+            padding-left: 5px;
+            height:120px;
+        }
+        .col-contact2{
+            padding-left:5px;
+            margin-left:100px ;
+        }
+        .phone{
+            font-size: 22px;
+            font-weight: bold;
+            line-height: 1;
+            color:#FF6900;
+        }
+        .six-text{
+            font-size:12px;
+            text-align: left;
+            margin-left: 80px;
+        }
+        .kefu{
+            border:1px solid #ff6700;
+            padding:8px 1px;
+            font-size: 12px;
+            cursor:pointer;
+            width:100px;
+            position:relative;
+            left:92px;
+            color:#FF6900;
+        }
+        .kefu:hover{
+            background-color: #ff6700;
+            color: white;
+        }
+        .kefu:hover svg path{
+            fill:white;
+        }
+        /* 回到顶部的TOP按钮 */
+        .top-button img{
+            cursor:pointer;
+            width: 40px;
+            position:fixed;
+            right:150px;
+            bottom:120px;
+            z-index: 100;
+
+        }
         /* 页尾整体  */
         .footer{
             display: flex;
@@ -195,7 +348,7 @@
         .footer a,span{
             color:#757575;
             text-decoration: none;
-            font-size: 10px;
+            font-size: 12px;
         }
         /* 页尾的第二部分链接 */
         div[class="footer-1"] div[class="word-2"] a{
@@ -229,8 +382,10 @@
         }
         /* 这里还要改一下使结尾的大小更加合适一些 */
         img[class="beautiful"]{
-            width:1200px;
-            height:30px;
+            width:400px;
+            height:20px;
+            position:relative;
+            left:330px;
         }
     </style>
 </head>
@@ -305,8 +460,148 @@
       <div class="swiper-button-next"></div>
       <div class="swiper-button-prev"></div>
       </div>
+      <!-- 第三部分图片 -->
+        <div class="swiper-container" id="change3">
+        <div class="swiper-wrapper">   
+        <div class="swiper-slide">     
+        <a href="https://www.mi.com/prod/xiaomi-ai-glasses?spmref=MiShop_PC.mihomepage.mtl_68268f9e352df300011b9422.1">
+      <img src="https://img.youpin.mi-img.com/ferriswheel/879bb793_9100_45a1_b535_a8e8e5fcfcd4.jpeg@base@tag=imgScale&F=webp&h=1080&q=90&w=2560">
+        </a>
+        </div>
+        <div class="swiper-slide">     
+        <a href="https://www.mi.com/prod/xiaomi-pad-7s-pro?spmref=MiShop_PC.mihomepage.mtl_68268f9e352df300011b9422.1">
+      <img src="https://img.youpin.mi-img.com/ferriswheel/18064957_ec72_4ba8_b4c8_c54145c49ea2.jpeg@base@tag=imgScale&F=webp&h=1080&q=90&w=2560" >
+        </a>
+        </div>
+        <div class="swiper-slide">    
+        <a href="https://www.mi.com/prod/xiaomi-open-earphones-pro?spmref=MiShop_PC.mihomepage.mtl_68268f9e352df300011b9422.1">
+        <img src="https://img.youpin.mi-img.com/ferriswheel/9b1735f6_e0c6_435f_9d4f_d1b4c3e2b93b.jpeg@base@tag=imgScale&F=webp&h=1080&q=90&w=2560" >
+        </a>
+        </div>
+        <div class="swiper-slide">     
+        <a href="https://www.mi.com/prod/xiaomi-watch-s4-41mm?spmref=MiShop_PC.mihomepage.mtl_68268f9e352df300011b9422.1">
+      <img src="https://img.youpin.mi-img.com/ferriswheel/63c88a2e_de38_4e59_b6e9_1abbe78dfe9d.jpeg@base@tag=imgScale&F=webp&h=1080&q=90&w=2560">
+        </a>
+        </div>
+        <div class="swiper-slide">     
+        <a href="https://www.mi.com/prod/xiaomi-smart-band-10?spmref=MiShop_PC.mihomepage.mtl_68268f9e352df300011b9422.1">
+      <img src="https://img.youpin.mi-img.com/ferriswheel/d435b6fd_f8aa_4a24_ab24_3a000fd51fc0.jpeg@base@tag=imgScale&F=webp&h=1080&q=90&w=2560">
+        </a>
+        </div>
+      </div>
+      <div class="custom-pagination3"></div>      
+      <div class="swiper-button-next"></div>
+      <div class="swiper-button-prev"></div>
+      </div>
+      <!-- 第四部分图片 -->
+        <div class="swiper-container" id="change4">
+        <div class="swiper-wrapper">   
+        <div class="swiper-slide">     
+        <a href="https://www.mi.com/prod/redmi-k80-ultra?spmref=MiShop_PC.mihomepage.mtl_6699ccb7799ab50001315f86.1">
+      <img src="https://img.youpin.mi-img.com/ferriswheel/bef03159_2a69_44f6_aa8e_134b9df896dc.jpeg@base@tag=imgScale&F=webp&h=1080&q=90&w=2560">
+        </a>
+        </div>
+        <div class="swiper-slide">     
+        <a href="https://www.mi.com/prod/redmi-turbo-4-pro?spmref=MiShop_PC.mihomepage.mtl_6699ccb7799ab50001315f86.1">
+      <img src="https://img.youpin.mi-img.com/ferriswheel/0323ab32_09f0_472b_b51e_8fa5ddd63151.jpeg@base@tag=imgScale&F=webp&h=1080&q=90&w=2560" >
+        </a>
+        </div>
+        <div class="swiper-slide">    
+        <a href="https://www.mi.com/prod/redmi-turbo-4?spmref=MiShop_PC.mihomepage.mtl_6699ccb7799ab50001315f86.1">
+        <img src="https://img.youpin.mi-img.com/ferriswheel/d15cf88d_1e3d_4437_8db5_98b3efed7eac.jpeg@base@tag=imgScale&F=webp&h=1080&q=90&w=2560" >
+        </a>
+        </div>
+        <div class="swiper-slide">     
+        <a href="https://www.mi.com/prod/redmi-note-14-pro+?spmref=MiShop_PC.mihomepage.mtl_6699ccb7799ab50001315f86.1">
+      <img src="https://img.youpin.mi-img.com/ferriswheel/71cad7e8_f910_4d70_a2e8_3693f768d566.jpeg@base@tag=imgScale&F=webp&h=1080&q=90&w=2560">
+        </a>
+        </div>
+      </div>
+      <div class="custom-pagination4"></div>      
+      <div class="swiper-button-next"></div>
+      <div class="swiper-button-prev"></div>
+      </div>
+      <!-- 第五部分图片 -->
+       <a href="https://www.mi.com/visual/award/workList?type=imageCiTiao">
+        <img src="https://img.youpin.mi-img.com/ferriswheel/0ed6ed9a_3b0a_445d_8d52_65448da0f0b6.jpeg@base@tag=imgScale&F=webp&h=1080&q=90&w=2560" class="f-picture">
+       </a>
+        <a href="https://hyperos.mi.com/?spmref=MiShop_PC.mihomepage.mtl_6720c092ac546f00015bcd9f.1">
+        <img src="https://img.youpin.mi-img.com/ferriswheel/b47c8038_f3a8_4294_b47e_da65ff39bb61.jpeg@base@tag=imgScale&F=webp&h=1080&q=90&w=2560" class="f-picture">
+       </a>
+        <a href="https://www.mi.com/human-car-home?spmref=MiShop_PC.mihomepage.mtl_65d72ec112f792000197cb21.1">
+        <img src="https://img.youpin.mi-img.com/ferriswheel/370c9ad8_fb2c_4a13_ad3f_249affd1ec1d.jpeg@base@tag=imgScale&F=webp&h=1080&q=90&w=2560" class="f-picture">
+       </a>
+       <!-- 第六部分链接 -->
+        <dl class="six-word">
+             <dl>
+            <dt class="s-word">选购指南</dt>
+            <dd><a href="https://www.mi.com/shop/search?keyword=%E6%89%8B%E6%9C%BA" target="_blank" class="s-word">手机</a></dd>
+            <dd><a href="https://www.mi.com/shop/search?keyword=%E7%94%B5%E8%A7%86" target="_blank" class="s-word">电视</a></dd>
+            <dd><a href="https://www.mi.com/shop/search?keyword=%E7%AC%94%E8%AE%B0%E6%9C%AC" target="_blank" class="s-word">笔记本</a></dd>
+            <dd><a href="https://www.mi.com/shop/search?keyword=%E5%B9%B3%E6%9D%BF" target="_blank" class="s-word">平板</a></dd>
+            <dd><a href="https://www.mi.com/shop/search?keyword=%E6%99%BA%E8%83%BD%E7%A9%BF%E6%88%B4" target="_blank" class="s-word">穿戴</a></dd>
+            <dd><a href="https://www.mi.com/shop/search?keyword=%E8%80%B3%E6%9C%BA" target="_blank" class="s-word">耳机</a></dd>
+            <dd><a href="https://www.mi.com/shop/search?keyword=%E5%AE%B6%E7%94%B5" target="_blank" class="s-word">家电</a></dd>
+            <dd><a href="https://www.mi.com/shop/search?keyword=%E8%B7%AF%E7%94%B1%E5%99%A8" target="_blank" class="s-word">路由器</a></dd>
+            <dd><a href="https://www.mi.com/shop/search?keyword=%E9%9F%B3%E7%AE%B1" target="_blank" class="s-word">音箱</a></dd>
+            <dd><a href="https://www.mi.com/shop/search?keyword=%E9%85%8D%E4%BB%B6" target="_blank" class="s-word">配件</a></dd>
+        </dl>
+                <dl>
+            <dt class="s-word">服务中心</dt>
+            <dd><a href="https://www.mi.com/service/aftersale/front" target="_blank" class="s-word">申请售后</a></dd>
+            <dd><a href="https://www.mi.com/service/exchange#phone" target="_blank" class="s-word">售后政策</a></dd>
+            <dd><a href="https://m.mi.com/aftersale/new-service#/pages/service-charge/product-search/index" target="_blank" class="s-word">服务价格</a></dd>
+            <dd><a href="https://account.xiaomi.com/fe/service/login/password?_qrsize=180&sid=mi_eshop&qs=%253Fcallback%253Dhttp%25253A%25252F%25252Forder.mi.com%25252Flogin%25252Fcallback%25253Ffollowup%25253Dhttps%2525253A%2525252F%2525252Fwww.mi.com%2525252Fshop%2525252Fuser%2525252ForderList%252526sign%25253DODhiZTMwZGViZTEwYmVkY2U3M2U1YjVlNTgzNGNiMzMzOTFmMGJiNA%25252C%25252C%2526sid%253Dmi_eshop%2526_qrsize%253D180&callback=http%3A%2F%2Forder.mi.com%2Flogin%2Fcallback%3Ffollowup%3Dhttps%253A%252F%252Fwww.mi.com%252Fshop%252Fuser%252ForderList%26sign%3DODhiZTMwZGViZTEwYmVkY2U3M2U1YjVlNTgzNGNiMzMzOTFmMGJiNA%2C%2C&_sign=fL3qBMtg9CXKAjUH6GCPDXQMEME%3D&serviceParam=%7B%22checkSafePhone%22%3Afalse%2C%22checkSafeAddress%22%3Afalse%2C%22lsrp_score%22%3A0.0%7D&showActiveX=false&theme=&needTheme=false&bizDeviceType=&_locale=zh_CN" target="_blank" class="s-word">订单查询</a></dd>
+            <dd><a href="https://www.mi.com/a/h/16769.html" target="_blank" class="s-word">以旧换新</a></dd>
+            <dd><a href="https://api.jr.mi.com/activity/scene/scenePCsearch.html?from=search" target="_blank" class="s-word">保障服务</a></dd>
+            <dd><a href="https://www.mi.com/service/imei" target="_blank" class="s-word">防伪查询</a></dd>
+            <dd><a href="https://www.mi.com/shop/order/fcode" target="_blank" class="s-word">F码通道</a></dd>
+        </dl>
+                <dl>
+            <dt class="s-word">线下门店</dt>
+            <dd><a href="https://www.mi.com/service/mihome/list" target="_blank" class="s-word">小米之家</a></dd>
+            <dd><a href="https://www.mi.com/service/sitelist" target="_blank" class="s-word">服务网点</a></dd>
+            <dd><a href="https://www.mi.com/service/family-location" target="_blank" class="s-word">授权体验店/专区</a></dd>
+        </dl>
+                <dl>
+            <dt class="s-word">关于小米</dt>
+            <dd><a href="https://www.mi.com/about" target="_blank" class="s-word">了解小米</a></dd>
+            <dd><a href="https://hr.xiaomi.com/" target="_blank" class="s-word">加入小米</a></dd>
+            <dd><a href="https://ir.mi.com/zh-hans" target="_blank" class="s-word">投资者关系</a></dd>
+            <dd><a href="https://www.mi.com/csr#/index" target="_blank" class="s-word">ESG与可持续发展</a></dd>
+            <dd><a href="https://integrity.mi.com/" target="_blank" class="s-word">廉洁举报</a></dd>
+        </dl>
+                <dl>
+            <dt class="s-word">关注我们</dt>
+            <dd><a href="https://www.mi.com/shop/search?keyword=%E6%89%8B%E6%9C%BA" target="_blank" class="s-word">新浪微博</a></dd>
+            <dd><a class="s-word">官方微信</a></dd>
+            <dd><a href="https://www.mi.com/about/contact" target="_blank" class="s-word">联系我们</a></dd>
+            <dd><a href="https://gongyi.mi.com/foundation#/home" target="_blank" class="s-word">公益基金会</a></dd>
+        </dl>
+               <!-- 第六部分的右边区域 -->
+        <div class="col-contact">
+        <div class="col-contact1">
+            <p class="phone">950816</p>
+            <p class="six-text">8:00-18:00(仅收市话费)</p>
+            <p class="kefu"><svg t="1752640806277" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="7580" width="12" height="12"><path d="M2.95183497 681.83774197c0 47.80717309 38.71951443 86.53007002 86.53796254 86.53007002h129.8001788v133.4735773c0 24.0157729 19.47194357 43.27349127 43.27574626 43.27349126 12.13078407 0 23.12504705-4.98129975 30.93299201-12.98317488l163.77178617-163.76389368h475.95090141c47.8094281 0 86.54247254-38.72289693 86.54247252-86.53007002V141.00028119c0-47.80717309-38.73304444-86.53458003-86.54247252-86.53458003l-843.73160465 0.00451001c-47.81957561 0-86.53909003 38.72289693-86.53909004 86.53007002v540.83746078h0.0011275z m259.6138876-248.78762226c0-29.85059097 24.2254881-54.08397158 54.08509908-54.08397158 29.85059097 0 54.08622658 24.23338061 54.08622658 54.08397158 0 29.85735597-24.23563561 54.08284408-54.08622658 54.08284408-29.85961097 0-54.08622658-24.2254881-54.08622658-54.08284408z m194.70477818 0c0-29.85059097 24.2254881-54.08397158 54.08509909-54.08397158s54.08622658 24.23338061 54.08622658 54.08397158c0 29.85735597-24.22661561 54.08284408-54.08622658 54.08284408s-54.08622658-24.2254881-54.08622658-54.08284408z m194.70477818 0c0-29.85059097 24.23450811-54.08397158 54.0850991-54.08397158 29.85961097 0 54.08622658 24.23338061 54.08622658 54.08397158 0 29.85735597-24.22661561 54.08284408-54.08622658 54.08284408-29.85059097 0-54.08622658-24.2254881-54.08622658-54.08284408z" p-id="7581" fill="#ff6700"></path></svg>人工客服</p>
+            <br>
+        </div>
+        <div class="col-contact2">
+            <p class="phone">950818</p>
+            <p class="time"></p>
+            <p class="six-text">8:00-18:00(仅收市话费)<br>
+            手机适用于：Xiaomi MIX Foldxilie、<br>
+            MIX Flip系列、数字12系列及以上<br>
+            电视适用于：98寸、100寸电视</p>
+            <p class="kefu"><svg t="1752640806277" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="7580" width="12" height="12"><path d="M2.95183497 681.83774197c0 47.80717309 38.71951443 86.53007002 86.53796254 86.53007002h129.8001788v133.4735773c0 24.0157729 19.47194357 43.27349127 43.27574626 43.27349126 12.13078407 0 23.12504705-4.98129975 30.93299201-12.98317488l163.77178617-163.76389368h475.95090141c47.8094281 0 86.54247254-38.72289693 86.54247252-86.53007002V141.00028119c0-47.80717309-38.73304444-86.53458003-86.54247252-86.53458003l-843.73160465 0.00451001c-47.81957561 0-86.53909003 38.72289693-86.53909004 86.53007002v540.83746078h0.0011275z m259.6138876-248.78762226c0-29.85059097 24.2254881-54.08397158 54.08509908-54.08397158 29.85059097 0 54.08622658 24.23338061 54.08622658 54.08397158 0 29.85735597-24.23563561 54.08284408-54.08622658 54.08284408-29.85961097 0-54.08622658-24.2254881-54.08622658-54.08284408z m194.70477818 0c0-29.85059097 24.2254881-54.08397158 54.08509909-54.08397158s54.08622658 24.23338061 54.08622658 54.08397158c0 29.85735597-24.22661561 54.08284408-54.08622658 54.08284408s-54.08622658-24.2254881-54.08622658-54.08284408z m194.70477818 0c0-29.85059097 24.23450811-54.08397158 54.0850991-54.08397158 29.85961097 0 54.08622658 24.23338061 54.08622658 54.08397158 0 29.85735597-24.22661561 54.08284408-54.08622658 54.08284408-29.85059097 0-54.08622658-24.2254881-54.08622658-54.08284408z" p-id="7581" fill="#ff6700"></path></svg>人工客服</p>
+        </div>
+        </div>
 
-      <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+        </dl>
+        <!-- 回到顶部的TOP按钮 -->
+         <div class="top-button">
+            <img src="https://cdn.cnbj1.fds.api.mi-img.com/staticsfile/visual/top-icon.png" >
+         </div>
      <!-- 页脚区域 -->
       <footer class="footer">
         <img src="logo.png">
@@ -337,7 +632,7 @@
         <span class="footer-char">|</span>
         <a href="https://static.mi.com/feedback/" target="_blank">问题反馈</a>
         <span class="footer-char">|</span>
-        <a >Select location or language</a>
+        <a >Select location</a>
         <br>
         <a href="https://www.mi.com/beihu" target="_blank">北京互联网法院法律服务工作站</a>
         <span class="footer-char">|</span>
@@ -384,7 +679,7 @@
             <img src="https://cdn.cnbj1.fds.api.mi-img.com/b2c-misite-activity/80933804b32694354bdd4f79a7b7aa90.png" class="image">
             </a>
             </div>
-            <img src="image.png" class="beautiful">
+            <img src="image.jpg" class="beautiful">
         </div>
         </div>
       </footer>
@@ -393,3 +688,4 @@
        <script src="./xiaomi.js"></script>
 </body>
 </html>
+<!-- 还需要做的：，图片之间的距离 -->
